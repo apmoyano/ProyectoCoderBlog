@@ -1,0 +1,23 @@
+{% extends 'blog/padre.html' %}
+
+{% block main_content %}
+
+
+<div class="container mt-5" style='text-align:center'>
+    {% if miFormulario.errors %}
+    <p style="color: red"> Hay problemas con los datos cargados</p>
+    {% endif %}
+        
+
+    <form action="/blog/comidas/" method="POST" class="form-group " >
+        {% csrf_token %}
+        <h4>Agregar Comidas</h4>
+        <table class="table">
+            {{formulario.as_table}}
+        </table>
+
+        <input type="submit" value="Cargar Comida" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock main_content %}

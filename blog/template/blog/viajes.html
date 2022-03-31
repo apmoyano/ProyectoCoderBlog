@@ -1,0 +1,54 @@
+{% extends 'blog/padre.html' %}
+
+{% block main_content %}
+
+<div class="col-sm-2 offset-md-5 mt-4">
+    <div class="card">
+      <div class="card-body">
+         <center><h5 class="card-title">Para buscar viajes</h5>
+       <a href="../buscarviaje" class="btn btn-primary">Clickea aca!</a></center>
+      </div>
+    </div>
+</div>
+
+<div class="container mt-5" style='text-align:center'>
+    {% if miFormulario.errors %}
+    <p style="color: red"> Hay problemas con los datos cargados</p>
+    {% endif %}
+        
+
+    <form action="/blog/viajes/" method="POST" class="form-group " >
+        {% csrf_token %}
+        <h4>Agregar Viajes</h4>
+        <table class="table">
+            {{formulario.as_table}}
+        </table>
+
+        <input type="submit" value="Cargar Viaje" class="btn btn-primary">
+    </form>
+</div>
+
+<div class="container mt-5">
+    <table class="table" center>
+        <thead >
+            <tr>
+                <th>Destino</th>
+                <th>Pais</th>
+                <th>Año</th>
+
+            </tr>
+        </thead>
+        <tbody>
+                {% for viajes in viaje %}
+                <tr>
+                <td>{{viajes.destino}}</td>
+                <td>{{viajes.pais}}</td>
+                <td>{{viajes.anio}}</td>
+                </tr> 
+                {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+{% endblock main_content %}
