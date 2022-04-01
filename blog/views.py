@@ -25,7 +25,7 @@ def viajes(request):
     else:
         form_viaje = ViajesFormulario()
 
-        return render(request, 'blog/viajes.html',{'formulario':form_viaje})
+        return render(request, 'blog/viajes.html',{'viajes': viajes,'formulario':form_viaje})
 
 
 def buscar_viaje(request):
@@ -35,8 +35,8 @@ def buscar_viaje(request):
 
     if data:
         try:
-            viaje = Viajes.objects.get(destino=data)
-            return render(request, 'blog/buscar_viaje.html', {"viaje": viaje, "id": data})
+            viajes = Viajes.objects.get(destino=data)
+            return render(request, 'blog/buscar_viaje.html', {"viajes": viajes, "id": data})
 
         except Exception as exc:
             print(exc)
@@ -79,4 +79,20 @@ def montanas(request):
     else:
         form_mont = MontanasFormulario()
 
-        return render(request, 'blog/montanas.html',{'formulario':form_mont})
+        return render(request, 'blog/montanas.html',{'montanas': montanas,'formulario':form_mont})
+
+
+def buscar_montana(request):
+
+    data = request.GET.get('nombre', "")
+    error = ""
+
+    if data:
+        try:
+            montanas = Montanas.objects.get(nombre=data)
+            return render(request, 'blog/buscar_montana.html', {"monatanas": montanas, "id": data})
+
+        except Exception as exc:
+            print(exc)
+            error = "No existe ese destino"
+    return render(request, 'blog/buscar_montana.html', {"error": error})

@@ -10,7 +10,7 @@
     {% endif %}
         
 
-    <form action="/blog/montanas/" method="POST" class="form-group " >
+    <form action="/blog/montanas/" method="POST" class="form-group ">
         {% csrf_token %}
         <h4>Agregar Montañas</h4>
         <table class="table">
@@ -33,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-                {% for montana in montañas %}
+                {% for montana in montanas %}
                 <tr>
                 <td>{{montana.nombre}}</td>
                 <td>{{montana.ubicacion}}</td>
@@ -44,7 +44,7 @@
     </table>
 </div>
        
-<!-- Page content-->
+{% comment %} <!-- Page content-->
     <div class="container" style="align-content: center;" >
          <div class="row">
              <!-- Blog entries-->
@@ -60,6 +60,6 @@
                 </div>
              </div>
         </div>
-    </div>   
+    </div>    {% endcomment %}
 
 {% endblock main_content %}

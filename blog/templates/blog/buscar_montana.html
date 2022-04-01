@@ -1,5 +1,5 @@
 {% extends 'blog/padre.html' %}
-
+{% comment %} 
 {% block content %}
 
 <!DOCTYPE html>
@@ -8,27 +8,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Viaje</title>
+    <title>Buscar Montaña</title>
 </head>
 <body>
     <div class="col-md-5 offset-md-3">
         <form action="/blog/buscarviaje/" method="get" class="card card-body p-5 " style="background-color: rgb(0, 206, 134);">
-            <h1 style="width: auto; color: white;" ><center>Buscar Destino</center></h1>
-            <input type="text" name="destino">
+            <h1 style="width: auto; color: white;" ><center>Buscar Montaña</center></h1>
+            <input type="text" name="montana">
             <input type="submit" value="Buscar">
 
         </form>
 
         {% if error %}<p style="color:red">{{error}}</p>{% endif %}
 
-        {% if viajes %}
-         <p> Destino encontrado: {{viajes.destino}}</p>
-         <p> Pais: {{viajes.pais}}</p>
-         <p> Año del viaje: {{viajes.año}}</p>
+        {% if montanas %}
+         <p> Nombre: {{montanas.nombre}}</p>
+         <p> Ubicacion: {{montanas.ubicacion}}</p>
+         <p> Dificultad: {{montanas.dificultad}}</p>
         {% endif %}
     </div>
 
 </body>
 </html>
 
-{% endblock content %}
+{% endblock content %} {% endcomment %}
