@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-16mampp$m(y71%g3ubn)s4=qm3qg-)(s8ig!ane2i-yqu+07^p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoCoder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\agus_\Documents\AGUSTIN\PYTHON\BLOG\ProyectoCoderBlog\blog\template'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

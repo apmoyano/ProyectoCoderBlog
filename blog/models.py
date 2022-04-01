@@ -7,7 +7,7 @@ class Viajes(models.Model):
    
     destino = models.CharField( primary_key=True,max_length=100)
     pais = models.CharField(max_length=100)
-    anio = models.IntegerField()
+    año = models.IntegerField()
 
     def __str__(self) -> str:
         return f"{self.destino} - {self.pais} | {self. año}"

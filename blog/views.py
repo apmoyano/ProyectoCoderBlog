@@ -1,29 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from django.template import Template, Context
 from blog.forms import *
 from blog.models import *
 
 # Create your views here.
 
-def Inicio(request):
+def index(request):
+
     return render(request,'blog/index.html')
 
-def ViajeView(request):
-    viaje= Viajes.objects.all()
+def viajes(request):
+    viajes= Viajes.objects.all()
     if request.method == 'POST':
-        viaje = ViajesFormulario(request.POST)
+        form_viaje = ViajesFormulario(request.POST)
         
-        if viaje.is_valid():
-            data = viaje.cleaned_data
-            viaje_nuevo= Viajes(data['destino'],data['pais'],data['anio'])
-            viaje_nuevo.save()
+        if form_viaje.is_valid():
+            data = form_viaje.cleaned_data
+            viaje= Viajes(data['destino'],data['pais'],data['año'])
+            viaje.save()
 
-        
-            return render(request, 'blog/viajes.html')
+            form_viaje = ViajesFormulario()
+            return render(request, 'blog/viajes.html',{'viajes': viajes, "title": "Viajes", "page": "Viajes", "formulario": form_viaje})
             
     else:
-        viaje_form = ViajesFormulario()
+        form_viaje = ViajesFormulario()
 
-        return render(request, 'blog/viajes.html',{'formulario':viaje_form})
+        return render(request, 'blog/viajes.html',{'formulario':form_viaje})
 
 
 def buscar_viaje(request):
@@ -42,7 +44,7 @@ def buscar_viaje(request):
     return render(request, 'blog/buscar_viaje.html', {"error": error})
 
 
-def ComidasView(request):
+def comidas(request):
     comida= Comidas.objects.all()
     if request.method == 'POST':
         comida = ComidasFormulario(request.POST)
@@ -61,20 +63,20 @@ def ComidasView(request):
         return render(request, 'blog/comidas.html',{'formulario':comida_form})
 
 
-def MontanasView(request):
+def montanas(request):
     montanas= Montanas.objects.all()
     if request.method == 'POST':
-        montanas = MontanasFormulario(request.POST)
+        form_mont = MontanasFormulario(request.POST)
         
-        if montanas.is_valid():
-            data = montanas.cleaned_data
+        if form_mont.is_valid():
+            data = form_mont.cleaned_data
             montana= Montanas(data['nombre'],data['ubicacion'],data['dificultad'])
             montana.save()
-
+            form_mont = MontanasFormulario()
         
-            return render(request, 'blog/montanas.html')
+            return render(request, 'blog/montanas.html',{'montanas': montanas, "title": "Montañas", "page": "Montañas", "formulario": form_mont})
             
     else:
-        montana_form = MontanasFormulario()
+        form_mont = MontanasFormulario()
 
-        return render(request, 'blog/montanas.html',{'formulario':montana_form})
+        return render(request, 'blog/montanas.html',{'formulario':form_mont})

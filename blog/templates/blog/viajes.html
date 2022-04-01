@@ -39,16 +39,15 @@
             </tr>
         </thead>
         <tbody>
-                {% for viajes in viaje %}
+                {% for viaje in viajes %}
                 <tr>
-                <td>{{viajes.destino}}</td>
-                <td>{{viajes.pais}}</td>
-                <td>{{viajes.anio}}</td>
+                <td>{{viaje.destino}}</td>
+                <td>{{viaje.pais}}</td>
+                <td>{{viaje.año}}</td>
                 </tr> 
                 {% endfor %}
         </tbody>
     </table>
-
 
 </div>
 {% endblock main_content %}
