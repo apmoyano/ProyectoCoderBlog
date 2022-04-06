@@ -96,3 +96,38 @@ def buscar_montana(request):
             print(exc)
             error = "No existe ese destino"
     return render(request, 'blog/buscar_montana.html', {"error": error})
+
+
+
+def borrarviaje(request, destino_id): #de la url viene un parametro que tiene que ser viaje_id
+    
+    try:
+        destino= Viajes.objects.get(destino=destino_id)
+        destino.delete()
+
+        return render(request,"blog/index.html")
+
+    except Exception as exc:
+        return render(request,"blog/index.html")
+
+def actualizarviaje(request,destino_id):
+    viajes = Viajes.objects.get(destino=destino_id)
+
+    if request.method == "POST":
+        form_viaje = ViajesFormulario(request.POST)
+
+        if form_viaje.is_valid():
+            informacion = form_viaje.cleaned_data
+            #viajes= Viajes(informacion['destino'],informacion['pais'],informacion['año'])
+
+            viajes.destino = informacion["destino"]
+            viajes.pais = informacion["pais"]
+            viajes.año = informacion["año"]
+            viajes.save()
+
+            return render(request,'blog/index.html')
+
+    else:
+        form_viaje =ViajesFormulario(initial={"destino":viajes.destino,"pais":viajes.pais,"año":viajes.año})
+
+        return render(request, 'blog/actualizar_viaje.html',{"formulario":form_viaje, "destino_id":destino_id})

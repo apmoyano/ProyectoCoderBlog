@@ -4,8 +4,8 @@ from django.db import models
 
 
 class Viajes(models.Model):
-   
-    destino = models.CharField( primary_key=True,max_length=100)
+
+    destino = models.CharField(primary_key=True,max_length=100)
     pais = models.CharField(max_length=100)
     año = models.IntegerField()
 
@@ -30,4 +30,4 @@ class Montanas(models.Model):
     id = models.AutoField(primary_key=True)
     
     def __str__(self) -> str:
-        return f"{self.nombre} - {self.ubicacion} - {self.pais}| {self.dificultad}"
+        return f"{self.nombre} - {self.ubicacion} | Nvl de dificultad: {self.dificultad}"
