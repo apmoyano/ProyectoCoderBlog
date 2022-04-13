@@ -1,49 +1,12 @@
-<!DOCTYPE html>
+{% extends 'blog/padre.html' %}
 
 {% load static %}
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Blog Home</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/logo.webp' %}" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <a class="navbar-brand" href="{% url 'comidas' %}">Comidas</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <a class="navbar-brand" href="{% url 'montanas' %}">Montañas</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio'%}">Home</a></li>
-            
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Page header with logo and tagline-->
-        <header class="py-5 bg-light border-bottom mb-4" >
-            <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Bienvenid@s a mi blog!</h1>
-                    <p class="lead mb-0">Acá encontraras todo sobre viajes, comidas y montañas del mundo!</p>
-                </div>
-            </div>
-        </header>
-        <!-- Page content-->
+
+{% block index_content %}
+    <body>    <!-- Page content-->
         <div class="container">
             <div class="row">
-                <!-- Blog entries-->
+               <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
@@ -91,13 +54,6 @@
                 
             </div>
         </div>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'blog/js/scripts.js' %}"></script>
     </body>
-</html>
+
+{% endblock index_content %}

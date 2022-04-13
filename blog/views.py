@@ -1,14 +1,21 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
 from django.template import Template, Context
 from blog.forms import *
 from blog.models import *
 
+# Autenticacion django
+from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin  #esto lo puedo agregar a las clases y me va a solicitar hacer login para poder verla
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
+    dict_ctx={"title":"Inicio","page":"Inicio"}
 
-    return render(request,'blog/index.html')
+    return render(request,'blog/index.html',dict_ctx)
 
+#@login_required()
 def viajes(request):
     viajes= Viajes.objects.all()
     if request.method == 'POST':
@@ -20,14 +27,15 @@ def viajes(request):
             viaje.save()
 
             form_viaje = ViajesFormulario()
-            return render(request, 'blog/viajes.html',{'viajes': viajes, "title": "Viajes", "page": "Viajes", "formulario": form_viaje})
+            return redirect('inicio')
+            #render(request, 'blog/viajes.html',{'viajes': viajes, "title": "Viajes", "page": "Viajes", "formulario": form_viaje})
             
     else:
         form_viaje = ViajesFormulario()
 
         return render(request, 'blog/viajes.html',{'viajes': viajes,'formulario':form_viaje})
 
-
+#@login_required()
 def buscar_viaje(request):
 
     data = request.GET.get('destino', "")
@@ -98,7 +106,6 @@ def buscar_montana(request):
     return render(request, 'blog/buscar_montana.html', {"error": error})
 
 
-
 def borrarviaje(request, destino_id): #de la url viene un parametro que tiene que ser viaje_id
     
     try:
@@ -131,3 +138,87 @@ def actualizarviaje(request,destino_id):
         form_viaje =ViajesFormulario(initial={"destino":viajes.destino,"pais":viajes.pais,"año":viajes.año})
 
         return render(request, 'blog/actualizar_viaje.html',{"formulario":form_viaje, "destino_id":destino_id})
+
+
+
+def login_request(request):
+
+    if request.method == "POST":
+        formulario = AuthenticationForm(request,data=request.POST)
+        if formulario.is_valid():
+            data= formulario.cleaned_data
+            nombre_usuario=data.get('username')
+            contraseña= data.get('password')
+            
+
+            usuario = authenticate(username=nombre_usuario,password=contraseña)
+
+            if usuario is not None:
+                login(request,usuario)
+                dict_ctx={"title":"Inicio","page":usuario}
+                return render(request,'blog/index.html',dict_ctx)
+
+            else:
+                dict_ctx={"title":"Inicio","page":usuario, "errors":["El usuario no existe"]}
+                return render(request,'blog/index.html',dict_ctx)
+        else:
+            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["Revise los datos indicados en el form"]}
+            return render(request,'blog/index.html',dict_ctx)
+
+
+    else:
+        form = AuthenticationForm()
+        return render(request,'blog/login.html',{"form":form})
+
+def register_request(request):
+
+    if request.method == "POST":
+
+        form = UsuarioRegistroForm(request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            form.save()
+            dict_ctx={"title":"Inicio","page":usuario}
+
+            return render(request,"blog/index.html",dict_ctx)
+        else:
+
+            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["No paso validacion"]}
+            return render(request,'blog/index.html',dict_ctx)
+    else:
+        form = UsuarioRegistroForm()
+        return render(request,"blog/register.html",{"form":form})
+
+#@login_required()
+def editar_usuario(request):
+
+    usuario = request.user
+
+    if request.method == "POST":
+        formulario = UsuarioEditForm(request.POST)
+
+        if formulario.is_valid():
+            data= formulario.cleaned_data
+            
+            usuario.first_name = data['first_name']
+            usuario.last_name = data['last_name']
+            usuario.email = data['email']
+            usuario.password1 = data['password1']
+            usuario.password2 = data['password2']
+
+            usuario.save()
+
+            return redirect("inicio")
+
+        else:
+
+            formulario = UsuarioEditForm(initial={'email':usuario.email})
+
+            return render(request,"blog/editar_usuario.html",{"form":formulario,"errors":["Datos invalidos"]})
+
+    else: 
+        formulario = UsuarioEditForm()
+
+
+    return render(request,"blog/editar_usuario.html",{"form":formulario})
+            
