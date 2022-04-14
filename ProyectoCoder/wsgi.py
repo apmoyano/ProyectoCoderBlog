@@ -15,6 +15,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ProyectoCoder.settings')
 
 application = get_wsgi_application()
 
-# from whitenoise.django import DjangoWhitenoise
 
-# application = DjangoWhitenoise
+from whitenoise.django import DjangoWhitenoise
+
+application = DjangoWhitenoise(application)
