@@ -17,6 +17,8 @@ path('buscarmontana/', buscar_montana, name='buscar_montana'),
 path('borrarviaje/<destino_id>/',borrarviaje,name='borrarviaje'),
 path('updateviaje/<destino_id>/',actualizarviaje),
 
-path("editar_usuario/",editar_usuario,name="editar_usuario")
+path("editar_usuario/",editar_usuario,name="editar_usuario"),
+
+path("cargar_imagen/",CargarImagen,name="cargar_imagen")
 
 ]

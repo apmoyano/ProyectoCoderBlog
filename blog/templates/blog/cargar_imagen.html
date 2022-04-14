@@ -1,0 +1,18 @@
+{% extends 'blog/padre.html' %}
+
+
+{% block main_content %}
+
+<div class="col-md-5 offset-md-3">
+
+    <form method="post" class="card card-body p-5 " enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Subir Imagen">
+ 
+ 
+     </form>
+</div>
+    
+
+{% endblock main_content %}

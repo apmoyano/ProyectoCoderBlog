@@ -11,8 +11,14 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    dict_ctx={"title":"Inicio","page":"Inicio"}
+    
+    
+    avatar = Avatar.objects.filter(user=request.user)
 
+    if len(avatar) > 0:
+        imagen = avatar[0].imagen.url
+
+        dict_ctx={"title":"Inicio","page":"Inicio","imagen_url":imagen}
     return render(request,'blog/index.html',dict_ctx)
 
 #@login_required()
@@ -221,4 +227,31 @@ def editar_usuario(request):
 
 
     return render(request,"blog/editar_usuario.html",{"form":formulario})
+
+@login_required()
+def CargarImagen(request):
+
+    if request.method == "POST":
+        formulario = AvatarFormulario(request.POST,request.FILES)
+
+        if formulario.is_valid():
+            usuario= request.user
+
+            avatar= Avatar.objects.filter(user=usuario)
+
+            if len(avatar) > 0:
+                avatar = avatar[0]
+                avatar.imagen = formulario.cleaned_data["imagen"]
+                avatar.save()
+
+            else: 
+                avatar = Avatar(user=usuario,imagen=formulario.cleaned_data["imagen"])
+                avatar.save()
+
+        return redirect("inicio")
+    else:
+        formulario = AvatarFormulario()
+        return render(request,"blog/cargar_imagen.html",{"form":formulario})        
+
+
             
