@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     
-    if request.user.usernam:
+    if request.user.username:
         avatar = Avatar.objects.filter(user=request.user)
 
         if len(avatar) > 0:
