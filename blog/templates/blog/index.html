@@ -3,7 +3,8 @@
 {% load static %}
 
 {% block index_content %}
-    <body>    <!-- Page content-->
+    <body>    
+        <!-- Page content-->
         <div class="container">
             <div class="row">
                <!-- Blog entries-->
@@ -21,8 +22,6 @@
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         <div class="col-lg-6">
-                            
-                           
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/viajes.webp' %}" alt="..." /></a>
@@ -35,8 +34,6 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            
-                            
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/comidas.jpg' %}" alt="..." /></a>
@@ -49,11 +46,39 @@
                             </div>
                         </div>
                     </div>
-                   
                 </div>
-                
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Categories widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Categoria de Blogs</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">Viajes</a></li>
+                                        <li><a href="#!">Montañas</a></li>
+                                        <li><a href="#!">Comidas</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="#!">Autos</a></li>
+                                        <li><a href="#!">Música</a></li>
+                                        <li><a href="#!">Proximamente...</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Side Widget</div>
+                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
-
+  
 {% endblock index_content %}

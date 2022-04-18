@@ -20,8 +20,9 @@ def index(request):
         else:
             imagen = None   
     else: 
-        imagen = None        
-        dict_ctx={"title":"Inicio","page":"Inicio","imagen_url":imagen}
+        imagen = None
+    dict_ctx={"title":"Inicio","page":"Inicio","imagen_url":imagen}
+
     return render(request,'blog/index.html',dict_ctx)
 
 #@login_required()
@@ -171,9 +172,8 @@ def login_request(request):
                 dict_ctx={"title":"Inicio","page":usuario, "errors":["El usuario no existe"]}
                 return render(request,'blog/index.html',dict_ctx)
         else:
-            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["Revise los datos indicados en el form"]}
+            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["Revise los datos indicados en el formulario"]}
             return render(request,'blog/index.html',dict_ctx)
-
 
     else:
         form = AuthenticationForm()
@@ -198,7 +198,7 @@ def register_request(request):
         form = UsuarioRegistroForm()
         return render(request,"blog/register.html",{"form":form})
 
-#@login_required()
+@login_required()
 def editar_usuario(request):
 
     usuario = request.user
@@ -222,14 +222,15 @@ def editar_usuario(request):
         else:
 
             formulario = UsuarioEditForm(initial={'email':usuario.email})
+            
 
             return render(request,"blog/editar_usuario.html",{"form":formulario,"errors":["Datos invalidos"]})
-
     else: 
         formulario = UsuarioEditForm()
 
 
     return render(request,"blog/editar_usuario.html",{"form":formulario})
+
 
 @login_required()
 def CargarImagen(request):
@@ -256,5 +257,20 @@ def CargarImagen(request):
         formulario = AvatarFormulario()
         return render(request,"blog/cargar_imagen.html",{"form":formulario})        
 
+
+@login_required()
+def ProfileView(request):
+
+    if request.user.username:
+        avatar = Avatar.objects.filter(user=request.user)
+
+        if len(avatar) > 0:
+            imagen = avatar[0].imagen.url
+        else:
+            imagen = None   
+    else: 
+        imagen = None        
+    dict_ctx={"title":"Inicio","page":"Inicio","imagen_url":imagen}
+    return render(request,'blog/profile.html',dict_ctx)
 
             

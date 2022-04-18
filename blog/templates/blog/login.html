@@ -12,9 +12,7 @@
         {% csrf_token %}
         {{form.as_p}}
 
-        <button type="submit">Iniciar Sesion</button>
-
-
+        <a href="{% url 'inicio' %}"><button type="submit">Iniciar Sesion</button></a>
 
     </form>
     
