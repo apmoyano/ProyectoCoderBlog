@@ -1,0 +1,29 @@
+{% extends 'blog/padre.html' %}
+    
+{% block main_content %}
+
+
+    {% if user.is_authenticated%}
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
+
+            <h1>Crear nuevo Post!</h1>
+            <br/><br/>      
+
+            <div class="form-group">
+                <form method="post" >
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <input type="submit" value="Publicar" class="btn btn-primary btn-lg mb-5">
+                </form>
+            </div>
+        </div>    
+
+    {% else %}
+
+    <h1>Inicie sesión para poder publicar</h1>
+
+    {% endif %}
+
+
+{% endblock main_content %}

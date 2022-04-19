@@ -23,10 +23,9 @@
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="{% url 'inicio'%}" class="nav-link px-2 text-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+              <li><a href="{% url 'post_list' %}" class="nav-link px-2 text-white">Lista Blogs</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Menssages</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">About me</a></li>
             </ul>
             {% comment %} Search 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -42,15 +41,13 @@
                         <a href="{% url 'register'%}"><button type="button" class="btn btn-warning" >Sign-up</button></a>
                     </div>
                 {% else %}
-                    {% comment %} <img height="40px" src="{{imagen_url}}" alt="Imagen">
-                    <p class="text-muted small mb-4 mb-lg-0"> Hola, {{request.user.username}}! </p> {% endcomment %}
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{imagen_url}}" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <p class="text-muted small mb-4 mb-lg-0"> Hola, {{request.user.username}}! </p>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">New post</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="{% url 'post_create'%}">Nuevo post</a></li>
+                    {% comment %} <li><a class="dropdown-item" href="#">Settings</a></li> {% endcomment %}
                     <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
@@ -87,12 +84,14 @@
             </div>
         </nav> {% endcomment %}
         {% block profile %}
+        
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
+            {% block main_content %}
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Bienvenid@s</h1>
-                    <p class="lead mb-0">Acá encontraras todo sobre viajes, comidas y montañas del mundo!</p>
+                    <p class="lead mb-0">Acá encontraras todo sobre viajes, comidas, montañas del mundo y más!</p>
                     {% if errors %}
                         {% for error in errors %}
                         <p style="color:red">{{error}}</p>
@@ -100,6 +99,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endblock main_content %}
         </header>
         {% block index_content %}
 
@@ -107,9 +107,6 @@
  
         {% endblock content %}
         
-        {% block main_content %}
-        {% endblock main_content %}
-
 
         {% endblock index_content %}
 

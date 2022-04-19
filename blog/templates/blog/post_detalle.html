@@ -1,0 +1,85 @@
+{% extends 'blog/padre.html' %}
+    
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{post.titulo}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">{{post.fecha_post}} by {{post.autor}}</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{post.imagen.url}}" alt="..." /></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <article class="intro_text">{{ post.body|safe|truncatewords:20 }}</article>
+                        </section>
+                    </article>
+                     
+                </div>
+                    <!-- Categories widget-->
+                    <div class="col-lg-4">
+                        <a href="{% url 'post_list' %}"><button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Regresar</button></a>
+                        <div class="card mb-4">
+                            <div class="card-header">Categories</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">Web Design</a></li>
+                                            <li><a href="#!">HTML</a></li>
+                                            <li><a href="#!">Freebies</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">JavaScript</a></li>
+                                            <li><a href="#!">CSS</a></li>
+                                            <li><a href="#!">Tutorials</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Side Widget</div>
+                            <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+{% comment %} INFORMACIÓN DEL POST  {% endcomment %}
+{% comment %} <div class="container-sm mt-3">
+    <h1 class="text-center mt-4">Informacion del curso</h1>
+    
+    <p class="text-center">Nombre del curso: {{curso.nombre}}</p>
+    <p class="text-center">Camada: {{curso.camada}}</p>
+    
+    <p class="text-center" >
+        <a href="{% url 'curso_list' %}">Regresar</a>
+    </p>
+</div> {% endcomment %}
+
+{% endblock main_content %}

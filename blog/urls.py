@@ -9,18 +9,22 @@ path('logout/',LogoutView.as_view(template_name="blog/logout.html"), name= 'logo
 path("profile/editar_usuario",editar_usuario,name="editar_usuario"),
 
 path("profile/",ProfileView, name="profile"),
-
-path('viajes/', viajes, name='viajes'),
-path('buscarviaje/', buscar_viaje, name='buscar_viaje'),
-
-path('comidas/', comidas, name='comidas'),
-path('montanas/', montanas, name='montanas'),
-path('buscarmontana/', buscar_montana, name='buscar_montana'),
-
-path('borrarviaje/<destino_id>/',borrarviaje,name='borrarviaje'),
-path('updateviaje/<destino_id>/',actualizarviaje),
-
 path("profile/cargar_imagen",CargarImagen,name="cargar_imagen"),
+path("post/nuevo/", PostCrear.as_view(), name="post_create"),
+path("post/list/", PostList.as_view(), name="post_list"),
+path("post/detalle/<pk>/", PostDetalle.as_view(), name="post_detail"),
+
+# path('viajes/', viajes, name='viajes'),
+# path('buscarviaje/', buscar_viaje, name='buscar_viaje'),
+
+# path('comidas/', comidas, name='comidas'),
+# path('montanas/', montanas, name='montanas'),
+# path('buscarmontana/', buscar_montana, name='buscar_montana'),
+
+# path('borrarviaje/<destino_id>/',borrarviaje,name='borrarviaje'),
+# path('updateviaje/<destino_id>/',actualizarviaje),
+
+
 
 
 
