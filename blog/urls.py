@@ -20,7 +20,7 @@ path('buscarmontana/', buscar_montana, name='buscar_montana'),
 path('borrarviaje/<destino_id>/',borrarviaje,name='borrarviaje'),
 path('updateviaje/<destino_id>/',actualizarviaje),
 
-path("cargar_imagen/",CargarImagen,name="cargar_imagen"),
+path("profile/cargar_imagen",CargarImagen,name="cargar_imagen"),
 
 
 

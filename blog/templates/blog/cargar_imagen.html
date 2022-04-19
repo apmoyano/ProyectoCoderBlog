@@ -1,18 +1,19 @@
 {% extends 'blog/padre.html' %}
 
 
-{% block main_content %}
+{% block profile %}
 
 <div class="col-md-5 offset-md-3">
 
-    <form method="post" class="card card-body p-5 " enctype="multipart/form-data">
+    <form method="post" class="card card-body p-5 " enctype="multipart/form-data" style="background-color: #4e779b;">
         {% csrf_token %}
+        <h1 style="width: auto; color: white;" ><center>Modificar Imagen</center></h1>
         {{form.as_p}}
         <input type="submit" value="Subir Imagen">
  
  
      </form>
 </div>
-    
+        
 
-{% endblock main_content %}
+{% endblock profile %}

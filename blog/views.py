@@ -152,6 +152,18 @@ def actualizarviaje(request,destino_id):
 
 
 def login_request(request):
+     #Avatar
+    if request.user.username:
+                    
+        avatar = Avatar.objects.filter(user=request.user)
+
+        if len(avatar) > 0:
+            imagen = avatar[0].imagen.url
+        else:
+            imagen = None   
+    else: 
+        imagen = None        
+    #Avatar          
 
     if request.method == "POST":
         formulario = AuthenticationForm(request,data=request.POST)
@@ -165,19 +177,20 @@ def login_request(request):
 
             if usuario is not None:
                 login(request,usuario)
-                dict_ctx={"title":"Inicio","page":usuario}
-                return render(request,'blog/index.html',dict_ctx)
+                
+                return redirect('inicio')
 
             else:
-                dict_ctx={"title":"Inicio","page":usuario, "errors":["El usuario no existe"]}
+                dict_ctx={"title":"Inicio","page":usuario, "errors":["El usuario no existe"],"imagen_url":imagen}
                 return render(request,'blog/index.html',dict_ctx)
         else:
-            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["Revise los datos indicados en el formulario"]}
+            dict_ctx={"title":"Inicio","page":"anonymous", "errors":["Revise los datos indicados en el formulario"],"imagen_url":imagen}
             return render(request,'blog/index.html',dict_ctx)
 
     else:
         form = AuthenticationForm()
-        return render(request,'blog/login.html',{"form":form})
+
+        return render(request,'blog/login.html',{"form":form,"imagen_url":imagen})
 
 def register_request(request):
 
@@ -189,7 +202,7 @@ def register_request(request):
             form.save()
             dict_ctx={"title":"Inicio","page":usuario}
 
-            return render(request,"blog/index.html",dict_ctx)
+            return render(request,"blog/login.html",dict_ctx)
         else:
 
             dict_ctx={"title":"Inicio","page":"anonymous", "errors":["No paso validacion"]}
@@ -227,9 +240,21 @@ def editar_usuario(request):
             return render(request,"blog/editar_usuario.html",{"form":formulario,"errors":["Datos invalidos"]})
     else: 
         formulario = UsuarioEditForm()
+        #Avatar
+        if request.user.username:
+            
+            avatar = Avatar.objects.filter(user=request.user)
 
+            if len(avatar) > 0:
+                imagen = avatar[0].imagen.url
+            else:
+                imagen = None   
+        else: 
+            imagen = None        
+        #Avatar
+        
 
-    return render(request,"blog/editar_usuario.html",{"form":formulario})
+    return render(request,"blog/editar_usuario.html",{"form":formulario,"imagen_url":imagen})
 
 
 @login_required()
@@ -255,7 +280,20 @@ def CargarImagen(request):
         return redirect("inicio")
     else:
         formulario = AvatarFormulario()
-        return render(request,"blog/cargar_imagen.html",{"form":formulario})        
+        #Avatar
+        if request.user.username:
+            
+            avatar = Avatar.objects.filter(user=request.user)
+
+            if len(avatar) > 0:
+                imagen = avatar[0].imagen.url
+            else:
+                imagen = None   
+        else: 
+            imagen = None        
+        #Avatar
+
+        return render(request,"blog/cargar_imagen.html",{"form":formulario,"imagen_url":imagen})        
 
 
 @login_required()

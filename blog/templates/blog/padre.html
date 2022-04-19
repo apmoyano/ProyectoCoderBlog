@@ -28,17 +28,18 @@
               <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li>
             </ul>
-    
+            {% comment %} Search 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
               <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form>
+            {% endcomment %}
 
             <div class="dropdown text-end">
                 {% if not request.user.is_authenticated %}
                     {% comment %} <a class="btn btn-primary" href="{% url 'login' %}">Iniciar sesion</a> {% endcomment %}
                     <div class="text-end">
                         <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-                        <button type="button" class="btn btn-warning" href="#">Sign-up</button>
+                        <a href="{% url 'register'%}"><button type="button" class="btn btn-warning" >Sign-up</button></a>
                     </div>
                 {% else %}
                     {% comment %} <img height="40px" src="{{imagen_url}}" alt="Imagen">
@@ -92,6 +93,11 @@
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Bienvenid@s</h1>
                     <p class="lead mb-0">Acá encontraras todo sobre viajes, comidas y montañas del mundo!</p>
+                    {% if errors %}
+                        {% for error in errors %}
+                        <p style="color:red">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </header>
