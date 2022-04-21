@@ -1,0 +1,20 @@
+{% extends 'blog/padre.html' %}
+
+
+{% block main_content %}
+
+
+<div class="container text-center mt-5 mb-5">
+    <h1>Estas seguro!?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Si deseas borrar el siguiente post -> <strong> {{object}} </strong> haz click en Confirmar
+        </label>
+        <br>
+        <input type="submit" value="Confirmar" class="btn btn-primary btn-sm mt-3">
+    </form>
+    <a href="{% url 'post_list'%}"><input type="submit" value="Denegar" class="btn btn-danger btn-sm mt-3"></a>
+
+</div>
+{% endblock main_content %}

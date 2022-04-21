@@ -12,28 +12,20 @@
                 <div class="col-lg-8">
                     <!-- Post content-->
                     <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{post.titulo}}</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">{{post.fecha_post}} by {{post.autor}}</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-                        </header>
-                        <!-- Preview image figure-->
-                        {% if post.imagen %}
-                        <figure class="mb-4"><img class="img-fluid rounded" src="{{post.imagen.url}}" alt="..." /></figure>
-                        {% else %}
-
+                        {% if formulario.errors %}
+                            <p style="color: red"> Hay problemas con los datos cargados</p>
                         {% endif %}
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <article class="intro_text">{{ post.body|safe|truncatewords:20 }}</article>
-                        </section>
+
+                        <form action="post/editar/{{post.pk}}/" method="POST">
+                            {% csrf_token %}
+                            <table>
+                                {{formulario.as_table}}
+                                
+                            </table>
+
+                            <input type="submit" value="Cargar Post">
+                        </form>
                     </article>
-                     
                 </div>
                     <!-- Categories widget-->
                     <div class="col-lg-4">

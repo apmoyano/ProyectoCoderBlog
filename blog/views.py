@@ -33,10 +33,9 @@ def index(request):
     return render(request,'blog/index.html',dict_ctx)
 
 
-
 # CRUD Post 
 
-class PostList(LoginRequiredMixin, ListView):
+class PostList(ListView):
 
     model = Post
     template_name = "blog/post_list.html"
@@ -47,30 +46,28 @@ class PostDetalle(DetailView):
     model = Post
     template_name = "blog/post_detalle.html"
 
-class PostCrear(CreateView):
+
+class PostCrear(LoginRequiredMixin,CreateView):
 
     model = Post
-    success_url = "/post/list/"
+    success_url = "/pages/"
     fields = ['titulo', 'subtitulo','imagen','body']
 
     def form_valid(self, form):
         form.instance.autor = self.request.user
         return super().form_valid(form)
 
-# class PostActualizar(UpdateView):
+class PostActualizar(LoginRequiredMixin,UpdateView):
 
-#     model = Post
-#     success_url = "/appcoder/curso/list"
-#     fields = ['nombre']
+    model = Post
+    success_url = "/pages/"
+    fields = ['titulo','subtitulo','imagen','body']
 
 
-# class PostBorrar(DeleteView):
+class PostBorrar(LoginRequiredMixin,DeleteView):
 
-#     model = Post
-#     success_url = "/appcoder/curso/list"
-
-#@login_required()
-# 
+    model = Post
+    success_url = "/post/list"
 
 
 def login_request(request):
