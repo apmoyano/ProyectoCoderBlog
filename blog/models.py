@@ -14,18 +14,20 @@ class Categoria(models.Model):
         return self.nomnbre
 
 class Post(models.Model):
+    picture=models.ImageField(upload_to='imagen_post', null= True, blank= True)
     titulo= models.CharField(max_length=255)
     subtitulo= models.CharField(max_length=255)
     autor=models.ForeignKey(User,on_delete=models.CASCADE)
-    imagen=models.ImageField(upload_to='imagen_post/', null= True, blank= True)
     body= RichTextField(blank=True , null=True)
     fecha_post=models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.titulo + '|' + str(self.autor)
-  #Usuario
+
+
+   #Usuario
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
-    imagen = models.ImageField(upload_to='avatares', null= True, blank= True, default='avatares/default.png')
+    imagen = models.ImageField(upload_to='avatares', default='avatares/default.png', null= True, blank= True, )
 

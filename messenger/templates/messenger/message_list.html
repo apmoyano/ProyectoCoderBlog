@@ -1,0 +1,42 @@
+{% extends 'blog/padre.html' %}
+
+
+{% block main_content %}
+<h1 class="text-center mt-4"> <span style="color: #002aff; text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;">Buzón Mensajes</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8"></div>
+            <div class="container m-5">
+                <div class="card-columns">
+                    {% if user.is_authenticated%}
+                        {% for message in object_list %}
+                            <div class="card">
+                                {% if message.receptor == user  %}
+                                <div class="card-body">
+                                    <div class="small text-muted">Mensaje de {{message.emisor}}</div>
+                                    <h2 class="card-title">{{message.titulo}}</h2>
+                                    <p class="card-text">{{message.subtitulo}}</p>
+                                    <a class="btn btn-primary" href="{% url 'message_detail' pk=message.pk %}">-->Leer mensaje<--</a> |
+                                    <a class="btn btn-primary" href="{% url 'message_delete' pk=message.pk %}">Borrar</a>
+                                </div>
+                                {% endif %} 
+                            </div>
+                        {% endfor %}
+                    
+
+                    {% else %}
+
+                    Inicie sesión para ver sus mensajes
+
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="container">
+                <a class="btn btn-primary btn-sm" href="{% url 'message_create' %}">Enviar Mensaje</a>
+            </div>
+        </div>    
+    </div>
+</div>    
+{% endblock main_content %}

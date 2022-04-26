@@ -1,0 +1,26 @@
+{% extends 'blog/login.html' %}
+
+{% block register %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+
+    <form method="post">
+       {% csrf_token %}
+       {{form.as_p}}
+       <input type="submit" value="Registrar" class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem;">
+    </form>
+    <p class="small fw  -bold mt-2 pt-1 mb-0">Tienes cuenta? <a href="{% url 'login' %}"
+        class="link">Login</a></p>
+    
+</body>
+</html>
+{% endblock register %}

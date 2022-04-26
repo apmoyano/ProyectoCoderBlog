@@ -1,0 +1,21 @@
+{% extends 'blog/padre.html' %}
+
+{% block profile %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Logout</title>
+    </head>
+    <body>
+        <form action="/blog/buscarviaje/" method="get" class="card card-body p-5 " style="background-color: rgb(0, 206, 134);">
+            <h1 style="width: auto; color: white;" ><center>Desconectado</center></h1>
+            <p>
+                <center><a href="{% url 'inicio' %}">Volver al Inicio</a></center>
+            </p>
+        </form>
+    </body>
+    </html>
+{% endblock profile %}

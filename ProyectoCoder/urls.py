@@ -21,6 +21,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('messenger/', include('messenger.urls')),
+     path('registro/', include('registro.urls')),
 ]
 
 

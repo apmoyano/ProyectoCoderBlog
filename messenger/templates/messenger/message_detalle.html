@@ -1,0 +1,40 @@
+{% extends 'blog/padre.html' %}
+    
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Mensaje content-->
+                    <article>
+                        <!-- Mensaje header-->
+                        <header class="mb-4">
+                            <!-- Mensaje title-->
+                            <h1 class="fw-bolder mb-1">Tienes un mensaje de {{message.emisor}}</h1>
+                            <!-- Mensaje meta content-->
+                            <div class="text-muted fst-italic mb-2"> Enviado por {{message.emisor}} el {{message.fecha}}</div>
+                        </header>
+                        <!-- Mensaje content-->
+                        <section class="mb-5">
+                            <article class="intro_text">{{ message.cuerpo|safe|truncatewords:20 }}</article>
+                        </section>
+                    </article>
+                </div>
+                    <!-- Categories widget-->
+                    <div class="col-lg-4">
+                        <a href="{% url 'message_list' %}"><button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Regresar</button></a>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock main_content %}
