@@ -1,0 +1,34 @@
+{% extends 'blog/padre.html' %}
+    
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <h1>Por favor seleccione la imagen para su post</h1>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                
+                                <br>
+                                <input type="submit" value="Cargar" class="btn btn-primary btn-sm mt-3">
+                            </form>
+                        </header>
+                        <a href="{% url 'post_list'%}"><input type="submit" value="Regresar" class="btn btn-danger btn-sm mt-3"></a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock main_content %}

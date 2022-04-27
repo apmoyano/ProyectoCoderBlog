@@ -12,52 +12,23 @@
                 <div class="col-lg-8">
                     <!-- Post content-->
                     <article>
-                        {% if formulario.errors %}
-                            <p style="color: red"> Hay problemas con los datos cargados</p>
-                        {% endif %}
+                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
+                            <h1>Actualizar Post!</h1>
+                            <br/><br/>      
 
-                        <form action="post/editar/{{post.pk}}/" method="POST">
-                            {% csrf_token %}
-                            <table>
-                                {{formulario.as_table}}
-                                
-                            </table>
+                            {% if formulario.errors %}
+                                <p style="color: red"> Hay problemas con los datos cargados</p>
+                            {% endif %}
 
-                            <input type="submit" value="Cargar Post">
-                        </form>
+                            <form action="/post/editar/{{post.pk}}/" method="post">
+                                {% csrf_token %}
+                                {{ form.media }}
+                                {{form.as_p}}
+                                <input type="submit" value="Publicar" class="btn btn-primary btn-lg mb-5">
+                            </form>
+                            <a href="{% url 'upload_picture'%}"><input type="submit" value="Modificar Imagen" class="btn btn-secondary btn-sm mt-3"></a>
+                        </div> 
                     </article>
-                </div>
-                    <!-- Categories widget-->
-                    <div class="col-lg-4">
-                        <a href="{% url 'post_list' %}"><button type="submit" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Regresar</button></a>
-                        <div class="card mb-4">
-                            <div class="card-header">Categories</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li><a href="#!">Web Design</a></li>
-                                            <li><a href="#!">HTML</a></li>
-                                            <li><a href="#!">Freebies</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <ul class="list-unstyled mb-0">
-                                            <li><a href="#!">JavaScript</a></li>
-                                            <li><a href="#!">CSS</a></li>
-                                            <li><a href="#!">Tutorials</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Side widget-->
-                        <div class="card mb-4">
-                            <div class="card-header">Side Widget</div>
-                            <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

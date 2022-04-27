@@ -1,0 +1,37 @@
+{% extends 'blog/padre.html' %}
+
+{% load static %}
+
+{% block main_content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                    <div class="container m-5">
+                        <div class="card-columns">
+                            <div class="card">
+                                <div class="card-body">
+                                     <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/yo.jpg' %}" alt="..." style="width: 20%; float: left; margin-right: 10px;"/></a>
+                                    <h2 class="card-title"><span style="color: #0064fa; text-shadow: -.5px 0 #0064fa, 0 .5px #0064fa;">Esta es mi historia</span></h2>
+                                     <p class="card-text">Mi nombre es Agustín Moyano y desde pequeño que encuentro entre las montañas un lugar donde refugiarme, donde aprender y crecer.</p>
+
+                                     <p class="card-text"><b>Viajando entre Montañas</b> nace luego de subir el Aconcagua en el año 2016, donde observándolo todo inmerso entre las nubes, entendí que las personas tenían que conocer y aprender más sobre nuestras queridas gigantes.</p>
+                                        
+                                     <p class="card-text">Sigo viajando y conociendo distintos lugares y sus bellas montañas, pero también invito a otros apasionados por la montaña a sumarse y contar sus experiencias.</p>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>    
+            </div>
+        </div>    
+    </body>
+</html>
+
+{% endblock main_content %}

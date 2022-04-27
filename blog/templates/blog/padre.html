@@ -25,7 +25,7 @@
               <li><a href="{% url 'inicio'%}" class="nav-link px-2 text-secondary">Home</a></li>
               <li><a href="{% url 'post_list' %}" class="nav-link px-2 text-white">Lista Post</a></li>
               <li><a href="{% url 'message_list' %}" class="nav-link px-2 text-white">Mensajes</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">About me</a></li>
+              <li><a href="{% url 'about_me' %}" class="nav-link px-2 text-white">Sobre mi</a></li>
             </ul>
 
 
@@ -64,9 +64,9 @@
                         <p style="color:red">{{error}}</p>
                         {% endfor %}
                     {% else %}   
-                    <h1 class="fw-bolder">Bienvenid@s</h1>
-                    <p class="lead mb-0">Acá encontraras todo sobre viajes, comidas, montañas del mundo y más!</p>
-                    
+                    <h1 class="fw-bolder">Viajando entre Montañas</h1>
+                    <p class="lead mb-0">Si eres de los que se apasiona por los colores de las montañas, el aroma de sus plantas y un amanecer en medio de las nubes.</p>
+                    <p class="lead mb-0">  <b>¡Entonces estás en el lugar correcto!</b></p>
                         
                     {% endif %}
                 </div>

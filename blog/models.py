@@ -7,11 +7,11 @@ from django.urls import reverse
 
 # Create your models here.
 
-class Categoria(models.Model):
-    nombre=models.CharField(max_length=255)
+# class Categoria(models.Model):
+#     nombre=models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.nomnbre
+#     def __str__(self):
+#         return self.nomnbre
 
 class Post(models.Model):
     picture=models.ImageField(upload_to='imagen_post', null= True, blank= True)
@@ -24,8 +24,6 @@ class Post(models.Model):
     def __str__(self):
         return self.titulo + '|' + str(self.autor)
 
-
-   #Usuario
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)

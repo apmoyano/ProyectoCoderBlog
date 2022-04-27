@@ -2,7 +2,7 @@
 
 
 {% block main_content %}
-<h1 class="text-center mt-4">Relatos <span style="color: #002aff; text-shadow: -.5px 0 black, 0 .5px black, .5px 0 black, 0 -.5px black;">2022</span></h1>
+<h1 class="text-center mt-4"> <span style="color: #0064fa; text-shadow: -.5px 0 #0064fa, 0 .5px #0064fa, .5px 0 #0064fa, 0 -.5px #0064fa;">Relatos 2022</span></h1>
 <div class="container">
     <div class="row">
         <div class="col-lg-8"></div>
@@ -21,9 +21,10 @@
                                 <p class="card-text">{{post.subtitulo}}</p>
                                 <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer más →</a> |
                                 {% if user.is_authenticated%}
-                                <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Detalle</a> |
-                                <a class="btn btn-primary" href="{%url 'post_update' pk=post.pk %}">Actualizar</a> |
-                                <a class="btn btn-primary" href="{% url 'post_delete' pk=post.pk %}">Borrar</a> |
+                                    {% if user == post.autor %}
+                                        <a class="btn btn-secondary" href="{%url 'post_update' pk=post.pk %}">Actualizar</a> |
+                                        <a class="btn btn-danger" href="{% url 'post_delete' pk=post.pk %}">Borrar</a> |
+                                   {% endif %}
                                 {% endif %}
                             </div>
                         </div>
