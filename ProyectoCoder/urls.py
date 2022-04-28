@@ -22,8 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     path('messenger/', include('messenger.urls')),
-     path('registro/', include('registro.urls')),
-]
+    path('registro/', include('registro.urls')),
+    path('login/', include('login.urls')),
+    path('profile/',include('perfiles.urls')),
+]   
 
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

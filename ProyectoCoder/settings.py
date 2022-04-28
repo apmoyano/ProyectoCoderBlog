@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'messenger',
     'registro',
+    'login',
+    'perfiles'
 ]
 
 MIDDLEWARE = [
