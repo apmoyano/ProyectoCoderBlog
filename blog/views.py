@@ -82,7 +82,7 @@ class PostBorrar(LoginRequiredMixin,DeleteView):
     success_url = "/pages/"
 
 
-def PictureUploadView(request):
+def PictureUploadView(request,pk):
 
     if request.user.username:
         avatar = Avatar.objects.filter(user=request.user)
@@ -101,19 +101,17 @@ def PictureUploadView(request):
 
         if formulario.is_valid():
 
-            usuario = request.user
-
-            imagen_post=Post.objects.filter(autor=usuario)
+            imagen_post=Post.objects.filter(id=pk)
 
             if len(imagen_post) > 0:
                 imagen_post = imagen_post[0]
                 imagen_post.picture = formulario.cleaned_data['picture']
                 imagen_post.save()
             else:
-                imagen_post = Post(autor = usuario, picture = formulario.cleaned_data['picture'])
+                imagen_post = Post(id=pk, picture = formulario.cleaned_data['picture'])
                 imagen_post.save()
 
         return redirect('post_list')
     else:
         formulario = PhotoUploadForm()
-        return render(request, 'blog/upload_picture.html', {"form":formulario,"imagen_url":imagen })
+        return render(request, 'blog/upload_picture.html', {"form":formulario,"imagen_url":imagen})

@@ -13,16 +13,16 @@
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/montana.jpg' %}" alt="..." /></a>
                         <div class="card-body">
-                            <div class="small text-muted">31 de Marzo, 2022</div>
-                            <h2 class="card-title">Everest</h2>
-                            <p class="card-text">Una de las montañas más mágicas del mundo!</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <div class="small text-muted">April 19, 2022</div>
+                            <h2 class="card-title">Aconcagua: un sueño cumplido</h2>
+                            <p class="card-text">La primera vez que intenté escalar al coloso de América el mal de altura me jugo en contra. Pero el 2016 fue el año donde decidí enfrentarlo de nuevo y en la cima descubrí el significado de la palabra felicidad.</p>
+                            <a class="btn btn-primary" href="/post/detalle/1/">Leer más →</a>
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         <div class="col-lg-6">
-                            <!-- Blog post-->
+                            {% comment %} <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/viajes.webp' %}" alt="..." /></a>
                                 <div class="card-body">
@@ -31,10 +31,10 @@
                                     <p class="card-text">Algunos tips para hacer tu viaje más economico!</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                         <div class="col-lg-6">
-                            <!-- Blog post-->
+                            {% comment %} <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="{% static 'blog/assets/comidas.jpg' %}" alt="..." /></a>
                                 <div class="card-body">
@@ -43,7 +43,7 @@
                                     <p class="card-text">Encontraremos un sin fin de comidas y las opiniones de nuestros catadores!</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -51,8 +51,11 @@
                 <div class="col-lg-4">
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header"><b>Inspiraciones</b></div>
+                        <div class="card-body">“Persigo la felicidad. Y la montaña responde a mi búsqueda.” <b>Chantal Maudit.</b></div>
+                        <div class="card-body">“Cerca de la cima siempre hay mil excusas para bajarse y una sola para subir.”  <b>Ramón Portilla.</b></div>
+                        <div class="card-body">“No conquistamos las montañas, sino a nosotros mismos.”  <b>Edmund Hillary.</b></div>
+                        <div class="card-body">“Vive tu vida como si subieras una montaña. De vez en cuando mira la cumbre, pero más importante es admirar las cosas bellas del camino. Sube despacio, firme, y disfruta cada momento. Las vistas desde la cima serán el regalo perfecto tras el viaje.”     <b>Harold V. Melchert.</b></div>
                     </div>
                 </div>
             </div>

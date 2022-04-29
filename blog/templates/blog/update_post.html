@@ -26,7 +26,7 @@
                                 {{form.as_p}}
                                 <input type="submit" value="Publicar" class="btn btn-primary btn-lg mb-5">
                             </form>
-                            <a href="{% url 'upload_picture'%}"><input type="submit" value="Modificar Imagen" class="btn btn-secondary btn-sm mt-3"></a>
+                            <a href="{% url 'upload_picture' pk=post.pk %}"><input type="submit" value="Modificar Imagen" class="btn btn-secondary btn-sm mt-3"></a>
                         </div> 
                     </article>
                 </div>
