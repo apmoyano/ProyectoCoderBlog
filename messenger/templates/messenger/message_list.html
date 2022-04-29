@@ -17,7 +17,7 @@
                                     <h2 class="card-title">{{message.titulo}}</h2>
                                     <p class="card-text">{{message.subtitulo}}</p>
                                     <a class="btn btn-primary" href="{% url 'message_detail' pk=message.pk %}">-->Leer mensaje<--</a> |
-                                    <a class="btn btn-primary" href="{% url 'message_delete' pk=message.pk %}">Borrar</a>
+                                    <a class="btn btn-danger" href="{% url 'message_delete' pk=message.pk %}">Borrar</a>
                                 </div>
                                 {% endif %} 
                             </div>

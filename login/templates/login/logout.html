@@ -10,10 +10,11 @@
         <title>Logout</title>
     </head>
     <body>
-        <form  method="get" class="card card-body p-5 " style="background-color: rgb(0, 206, 134);">
-            <h1 style="width: auto; color: white;" ><center>Desconectado</center></h1>
+        <form  method="get" class="card card-body p-5 " style="background-color: rgb(233, 186, 16);">
+            <h1 style="width: auto; color: white;" ><center>Tu sesion a finalizado</center></h1>
             <p>
-                <center><a href="{% url 'inicio' %}">Volver al Inicio</a></center>
+                <center><a class="btn btn-primary" href="{% url 'inicio' %}">Volver al Inicio</a></center>
+                
             </p>
         </form>
     </body>

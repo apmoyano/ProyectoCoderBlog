@@ -42,7 +42,6 @@
                     <p class="text-muted small mb-4 mb-lg-0"> Hola, {{request.user.username}}! </p>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="{% url 'post_create'%}">Nuevo post</a></li>
-                    {% comment %} <li><a class="dropdown-item" href="#">Settings</a></li> {% endcomment %}
                     <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>

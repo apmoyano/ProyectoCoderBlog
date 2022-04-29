@@ -31,7 +31,7 @@ def editar_usuario(request):
             formulario = UsuarioEditForm(initial={'email':usuario.email})
             
 
-            return render(request,"registro/editar_usuario.html",{"form":formulario,"errors":["Datos invalidos"]})
+            return render(request,"perfiles/editar_usuario.html",{"form":formulario,"errors":["Datos invalidos"]})
     else: 
         formulario = UsuarioEditForm()
         #Avatar
@@ -48,7 +48,7 @@ def editar_usuario(request):
         #Avatar
         
 
-    return render(request,"registro/editar_usuario.html",{"form":formulario,"imagen_url":imagen})
+    return render(request,"perfiles/editar_usuario.html",{"form":formulario,"imagen_url":imagen})
 
 
 @login_required()
@@ -87,7 +87,7 @@ def CargarImagen(request):
             imagen = None        
         #Avatar
 
-        return render(request,"registro/cargar_imagen.html",{"form":formulario,"imagen_url":imagen})        
+        return render(request,"perfiles/cargar_imagen.html",{"form":formulario,"imagen_url":imagen})        
 
 
 @login_required()
@@ -103,4 +103,4 @@ def ProfileView(request):
     else: 
         imagen = None        
     dict_ctx={"title":"Inicio","page":"Inicio","imagen_url":imagen}
-    return render(request,'registro/profile.html',dict_ctx)
+    return render(request,'perfiles/profile.html',dict_ctx)

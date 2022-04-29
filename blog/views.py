@@ -61,7 +61,7 @@ class PostDetalle(DetailView):
 class PostCrear(LoginRequiredMixin,CreateView):
 
     model = Post
-    success_url = "/post/upload_picture/"
+    success_url = "/pages/"
     fields = ['titulo', 'subtitulo','body']
 
     def form_valid(self, form):

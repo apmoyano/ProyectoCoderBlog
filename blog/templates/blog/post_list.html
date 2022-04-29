@@ -23,8 +23,12 @@
                                 <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Leer más →</a> |
                                 {% if user.is_authenticated%}
                                     {% if user == post.autor %}
+                                        {% if not post.picture %}
+                                        <a class="btn btn-dark" href="{% url 'upload_picture' pk=post.pk %}">Agregar Foto</a> |
+                                        {% endif %}
                                         <a class="btn btn-secondary" href="{%url 'post_update' pk=post.pk %}">Actualizar</a> |
                                         <a class="btn btn-danger" href="{% url 'post_delete' pk=post.pk %}">Borrar</a> |
+
                                    {% endif %}
                                 {% endif %}
                             </div>
