@@ -1,9 +1,12 @@
 # ProyectoCoderBlog
 
-1. Podras ingresar Viajes, Comidas o Montañas
+Bienvenidos a mi Blog de montañas!
 
-![image](https://user-images.githubusercontent.com/101276871/161115082-929f4a54-d88f-4140-999a-44a5ba1b2957.png)
+![image](https://user-images.githubusercontent.com/101276871/166083901-84919430-a885-4ad6-974c-63fcc07e8671.png)
 
-2. En VIAJES podras buscar segun el destino que hayas cargado
+Mi nombre es Agustin Moyano, este blog busca permitir a amantes de la montaña poder compartir experiencias vividas, tips y consejos.
+Como usuarios podran crear post y enviar mensajes con otros usuarios registrados.
 
-![image](https://user-images.githubusercontent.com/101276871/161115410-2d8cfa95-ffba-46b8-af6e-e33aca7b628d.png)
+![image](https://user-images.githubusercontent.com/101276871/166084007-f2f9cc48-1898-4578-9b59-802350bd391b.png)
+
+Espero que les guste!
