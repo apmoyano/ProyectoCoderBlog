@@ -27,5 +27,5 @@ class Post(models.Model):
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
-    imagen = models.ImageField(upload_to='avatares', default='avatares/default.png', null= True, blank= True, )
+    imagen = models.ImageField(upload_to='avatares', default='blog/assets/default.png', null= True, blank= True, )
 

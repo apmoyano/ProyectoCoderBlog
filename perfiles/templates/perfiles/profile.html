@@ -1,5 +1,5 @@
 {% extends 'blog/padre.html' %}
-
+{% load static %}
 {% block profile %}
 
 
@@ -21,8 +21,13 @@
                     
     
                 <div class="text-center">
+            {% if avatar == Null %}
+                <img src="{% static 'blog/assets/default.png' %}" style="width: 150px;" class="rounded-3" alt="avatar" >
+
+            {% else %}
                 <img src="{{imagen_url}}" style="width: 150px;" class="rounded-3" alt="avatar" >
                 <h5 class="mb-2"><strong>Usuario: {{request.user.username}}</strong></h5>
+            {% endif %}    
 
                 </div></hr><br>
     
